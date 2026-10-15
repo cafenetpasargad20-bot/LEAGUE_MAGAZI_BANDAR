@@ -16,7 +16,7 @@
 <section id="standings" class="card"><h2>📊 جدول رده‌بندی</h2><p class="muted">جدول بر اساس نتایج ثبت‌شده به‌صورت خودکار محاسبه می‌شود.</p><div class="scroll"><table><thead><tr><th>رتبه</th><th>تیم</th><th>بازی</th><th>برد</th><th>مساوی</th><th>باخت</th><th>گل زده</th><th>گل خورده</th><th>تفاضل</th><th>امتیاز</th></tr></thead><tbody id="tableBody"></tbody></table></div></section>
 <section class="layout"><div class="card" id="results"><h2>🥅 آخرین نتایج</h2><div id="resultsList"></div></div><div class="card" id="teams"><h2>🌍 تیم‌های شرکت‌کننده</h2><p class="muted">هشت قدرت جام جهانی در لیگ BANDAR</p><div class="chips" id="teamList"></div></div></section>
 <section class="card" id="fixtures"><h2>🗓️ برنامه مسابقات</h2><div id="fixturesList"></div></section>
-<section class="card" id="knockout"><h2>🏆 نمودار حذفی</h2><p class="muted">فرمت فعلی مسابقات جدولی و بدون حذفی است؛ این نمودار برای مرحله حذفی احتمالی آماده است.</p><div class="columns"><div class="round"><b>نیمه‌نهایی ۱</b><p>تیم اول صعودکننده <span class="score">VS</span> تیم چهارم صعودکننده</p></div><div class="round"><b>نیمه‌نهایی ۲</b><p>تیم دوم صعودکننده <span class="score">VS</span> تیم سوم صعودکننده</p></div><div class="round" style="grid-column:1/-1;text-align:center"><b>🏆 فینال</b><p>برنده نیمه‌نهایی ۱ <span class="score">VS</span> برنده نیمه‌نهایی ۲</p></div></div></section>
+<section class="card" id="knockout"><h2>🏆 نمودار حذفی قابل ویرایش</h2><p class="muted">۸ تیم · یک‌چهارم نهایی، نیمه‌نهایی و فینال</p><div id="knockoutList" class="columns"></div></section>
 <section class="layout"><div class="card" id="buy"><h2>🛒 لیست خرید گل</h2><div id="buyList"></div><p class="muted">برای خرید و هماهنگی با مدیریت تماس بگیر.</p><a class="linkbtn" href="https://rubika.ir/aQA_BANDAR_JR" target="_blank" rel="noopener">ارتباط با مدیر ↗</a></div><div class="card" id="saved"><h2>📌 لیست ذخیره گل</h2><div id="savedList"><p class="muted">هنوز موردی ثبت نشده است.</p></div><a class="linkbtn" href="https://rubika.ir/aQA_BANDAR_JR" target="_blank" rel="noopener">پیام به مدیر ↗</a></div></section>
 <section class="card" id="news"><h2>📰 اخبار و اطلاعیه‌ها</h2><div id="newsList"><p class="muted">خبرهای رسمی لیگ در این بخش منتشر می‌شوند.</p></div></section>
 <section class="card" id="contact"><h2>☎️ ارتباط با لیگ</h2><p>مدیریت: <a href="https://rubika.ir/aQA_BANDAR_JR" target="_blank" rel="noopener">@aQA_BANDAR_JR</a></p><p>کانال رسمی: <a href="https://rubika.ir/LEAGUE_MAGAZI_BANDAR" target="_blank" rel="noopener">@LEAGUE_MAGAZI_BANDAR</a></p><a class="linkbtn" href="https://rubika.ir/LEAGUE_MAGAZI_BANDAR" target="_blank" rel="noopener">ورود به کانال لیگ ↗</a></section>
@@ -25,7 +25,7 @@
 <h3>افزودن بازی به هر هفته</h3><div class="fields"><input id="weekInput" type="number" min="1" max="99" value="3" placeholder="شماره هفته"><select id="fixtureHome"></select><select id="fixtureAway"></select></div><div class="actions"><button class="btn" id="addFixture">افزودن بازی</button><button class="btn danger" id="clearFixtures">پاک‌کردن برنامه</button></div>
 <h3>ویرایش لیست تیم‌ها (هر تیم در یک خط)</h3><textarea id="teamsInput" rows="5"></textarea><div class="actions"><button class="btn" id="saveTeams">ذخیره تیم‌ها</button></div>
 <h3>ویرایش لیست خرید گل</h3><textarea id="buyInput" rows="5"></textarea><div class="actions"><button class="btn" id="saveBuy">ذخیره لیست خرید</button><button class="btn" id="defaultBuy">بازگردانی اولیه</button></div>
-<h3>ویرایش لیست ذخیره گل (هر مورد در یک خط)</h3><textarea id="savedInput" rows="4" placeholder="نام بازیکن - تعداد گل"></textarea><div class="actions"><button class="btn" id="saveSaved">ذخیره لیست گل</button></div>
+<h3>ویرایش لیست ذخیره گل (هر مورد در یک خط)</h3><textarea id="savedInput" rows="4" placeholder="نام بازیکن - تعداد گل"></textarea><div class="actions"><button class="btn" id="saveSaved">ذخیره لیست گل</button></div>\n<h3>ویرایش نمودار حذفی (هر بازی در یک خط)</h3><p class="muted">قالب هر خط: مرحله | تیم میزبان | گل میزبان | تیم مهمان | گل مهمان. برای بازی انجام‌نشده گل‌ها را - بگذار.</p><textarea id="knockoutInput" rows="9" placeholder="یک‌چهارم نهایی | آرژانتین | - | اسپانیا | -"></textarea><div class="actions"><button class="btn" id="saveKnockout">ذخیره نمودار حذفی</button><button class="btn" id="resetKnockout">بازگردانی نمودار ۸ تیمی</button></div>
 <h3>انتشار خبر</h3><input id="newsTitle" placeholder="عنوان خبر"><textarea id="newsText" rows="3" placeholder="متن خبر"></textarea><div class="actions"><button class="btn" id="publishNews">انتشار خبر</button><button class="btn danger" id="clearNews">حذف خبرها</button></div><p class="status" id="status"></p></div><p class="muted">لینک مدیریت: همین آدرس به‌همراه <code>?manage=bandar-admin</code></p></section>
 <footer class="footer">© لیگ مجازی BANDAR کبیرخ · فوتبال مجازی، رقابت واقعی ⚽</footer>
 </main>
@@ -34,8 +34,17 @@ const initialTeams=["🇦🇷 آرژانتین","🇪🇸 اسپانیا","🇫�
 const initialMatches=[["🇮🇹 ایتالیا",2,"🇦🇷 آرژانتین",1],["🇪🇸 اسپانیا",3,"🇳🇴 نروژ",0],["🇮🇷 ایران",16,"🇫🇷 فرانسه",7],["🇩🇪 آلمان",2,"🇧🇷 برزیل",4]];
 const initialFixtures=[{week:2,home:"🇦🇷 آرژانتین",away:"🇳🇴 نروژ"},{week:2,home:"🇮🇹 ایتالیا",away:"🇮🇷 ایران"},{week:2,home:"🇪🇸 اسپانیا",away:"🇩🇪 آلمان"},{week:2,home:"🇫🇷 فرانسه",away:"🇧🇷 برزیل"}];
 const initialBuy=["هر ۵ رای = ۱ گل","۱۰۰۰ سکه روبیستا = ۲۵ گل","۲۰۰ سکه عضو بگیر = ۴۰ گل","هر جج = ۵ گل","هر ۱۰ تومن پول = ۳۰ گل"];
+const initialKnockout=[
+["یک‌چهارم نهایی","🇦🇷 آرژانتین","-","🇪🇸 اسپانیا","-"],
+["یک‌چهارم نهایی","🇫🇷 فرانسه","-","🇧🇷 برزیل","-"],
+["یک‌چهارم نهایی","🇮🇷 ایران","-","🇮🇹 ایتالیا","-"],
+["یک‌چهارم نهایی","🇳🇴 نروژ","-","🇩🇪 آلمان","-"],
+["نیمه‌نهایی","برنده بازی ۱","-","برنده بازی ۲","-"],
+["نیمه‌نهایی","برنده بازی ۳","-","برنده بازی ۴","-"],
+["فینال","برنده نیمه‌نهایی ۱","-","برنده نیمه‌نهایی ۲","-"]
+];
 function load(k,f){try{const x=localStorage.getItem("bandarNew_"+k);return x===null?JSON.parse(JSON.stringify(f)):JSON.parse(x)}catch(e){return JSON.parse(JSON.stringify(f))}}
-let teams=load("teams",initialTeams),matches=load("matches",initialMatches),fixtures=load("fixtures",initialFixtures),buy=load("buy",initialBuy),saved=load("saved",[]),news=load("news",[]);
+let teams=load("teams",initialTeams),matches=load("matches",initialMatches),fixtures=load("fixtures",initialFixtures),buy=load("buy",initialBuy),saved=load("saved",[]),news=load("news",[]),knockout=load("knockout",initialKnockout);
 const $=id=>document.getElementById(id);function store(k,v){try{localStorage.setItem("bandarNew_"+k,JSON.stringify(v));$("status").textContent="تغییرات در همین مرورگر ذخیره شد."}catch(e){$("status").textContent="ذخیره‌سازی مرورگر ممکن نیست."}}
 function escapeText(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function fillSelect(id){const el=$(id),old=el.value;el.innerHTML=teams.map(t=>'<option value="'+escapeText(t)+'">'+escapeText(t)+'</option>').join("");if(teams.includes(old))el.value=old}
@@ -45,10 +54,11 @@ $("fixturesList").innerHTML=fixtures.length?[...new Set(fixtures.map(f=>+f.week)
 $("teamList").innerHTML=teams.map(t=>'<span class="chip">'+escapeText(t)+'</span>').join("");$("teamCount").textContent=teams.length;$("matchCount").textContent=matches.length;$("weekCount").textContent=new Set(fixtures.map(f=>+f.week)).size;
 $("buyList").innerHTML=buy.length?buy.map(t=>'<div class="price"><span>'+escapeText(t)+'</span><b style="color:var(--gold)">✦</b></div>').join(""):'<p class="muted">لیست خرید خالی است.</p>';
 $("savedList").innerHTML=saved.length?saved.map(t=>'<div class="price">'+escapeText(t)+'</div>').join(""):'<p class="muted">هنوز موردی ثبت نشده است.</p>';
+$("knockoutList").innerHTML=knockout.map((m,i)=>'<div class="round"><b>'+escapeText(m[0])+' · بازی '+(i+1)+'</b><div class="match"><span class="team">'+escapeText(m[1])+'</span><b class="score">'+escapeText(m[2])+' - '+escapeText(m[4])+'</b><span class="team">'+escapeText(m[3])+'</span></div></div>').join("");
 $("newsList").innerHTML=news.length?news.map(n=>'<article class="round" style="margin:9px 0"><b>'+escapeText(n.title)+'</b><p>'+escapeText(n.text)+'</p><small class="muted">'+escapeText(n.date)+'</small></article>').join(""):'<p class="muted">خبرهای رسمی لیگ در این بخش منتشر می‌شوند.</p>';
 ["home","away","fixtureHome","fixtureAway"].forEach(fillSelect);
 }
-if(new URLSearchParams(location.search).get("manage")==="bandar-admin"){$("adminTools").classList.add("show");$("teamsInput").value=teams.join("\n");$("buyInput").value=buy.join("\n");$("savedInput").value=saved.join("\n")}
+if(new URLSearchParams(location.search).get("manage")==="bandar-admin"){$("adminTools").classList.add("show");$("teamsInput").value=teams.join("\n");$("buyInput").value=buy.join("\n");$("savedInput").value=saved.join("\n");$("knockoutInput").value=knockout.map(m=>m.join(" | ")).join("\n") }
 $("saveResult").onclick=()=>{const h=$("home").value,a=$("away").value,x=$("homeScore").value,y=$("awayScore").value;if(!h||!a||h===a||x===""||y===""||+x<0||+y<0)return $("status").textContent="دو تیم متفاوت و نتیجه معتبر وارد کن.";const i=matches.findIndex(m=>(m[0]===h&&m[2]===a)||(m[0]===a&&m[2]===h));const item=[h,+x,a,+y];if(i<0)matches.push(item);else matches[i]=item;store("matches",matches);render()};
 $("resetResults").onclick=()=>{matches=JSON.parse(JSON.stringify(initialMatches));store("matches",matches);render()};
 $("addFixture").onclick=()=>{const week=+$("weekInput").value,h=$("fixtureHome").value,a=$("fixtureAway").value;if(!Number.isInteger(week)||week<1||week>99||!h||!a||h===a)return $("status").textContent="هفته و دو تیم متفاوت معتبر انتخاب کن.";fixtures.push({week,home:h,away:a});store("fixtures",fixtures);render()};
@@ -57,6 +67,8 @@ $("saveTeams").onclick=()=>{const next=$("teamsInput").value.split("\n").map(x=>
 $("saveBuy").onclick=()=>{buy=$("buyInput").value.split("\n").map(x=>x.trim()).filter(Boolean);store("buy",buy);render()};
 $("defaultBuy").onclick=()=>{buy=[...initialBuy];$("buyInput").value=buy.join("\n");store("buy",buy);render()};
 $("saveSaved").onclick=()=>{saved=$("savedInput").value.split("\n").map(x=>x.trim()).filter(Boolean);store("saved",saved);render()};
+$("saveKnockout").onclick=()=>{const rows=$("knockoutInput").value.split("\n").map(line=>line.split("|").map(x=>x.trim())).filter(row=>row.some(Boolean));if(rows.length!==7||rows.some(row=>row.length!==5||row.some(x=>!x))){$("status").textContent="باید دقیقاً ۷ بازی با ۵ بخش جداشده با | وارد کنی.";return}if(rows.some(row=>!["یک‌چهارم نهایی","نیمه‌نهایی","فینال"].includes(row[0]))){$("status").textContent="نام مرحله باید یک‌چهارم نهایی، نیمه‌نهایی یا فینال باشد.";return}knockout=rows;store("knockout",knockout);render()};
+$("resetKnockout").onclick=()=>{knockout=JSON.parse(JSON.stringify(initialKnockout));$("knockoutInput").value=knockout.map(m=>m.join(" | ")).join("\n");store("knockout",knockout);render()};
 $("publishNews").onclick=()=>{const title=$("newsTitle").value.trim(),text=$("newsText").value.trim();if(!title||!text)return $("status").textContent="عنوان و متن خبر را وارد کن.";news.unshift({title,text,date:new Date().toLocaleDateString("fa-IR")});store("news",news);$("newsTitle").value="";$("newsText").value="";render()};
 $("clearNews").onclick=()=>{if(confirm("تمام خبرها حذف شوند؟")){news=[];store("news",news);render()}};
 render();
